@@ -96,3 +96,23 @@ class CategoryTile extends StatelessWidget {
     );
   }
 }
+
+class BlogTile extends StatelessWidget {
+
+
+  final String imageUrl,title, description;
+
+  const BlogTile({Key key, this.imageUrl, this.title, this.description}) : super(key: key);
+    @override
+  Widget build(BuildContext context) {
+    return Container( 
+      child: Column(
+        children: <Widget>[
+          Image.network(imageUrl),
+        Text(title),
+        Text(description),
+        ],
+      ),
+    );
+  }
+}
