@@ -24,7 +24,26 @@ class _HomeState extends State<Home> {
         ),
         elevation: 0.0,
       ),
+      body: Container(
+        
+      ),
 
     );
+  }
+}
+
+class CategoryTile extends StatelessWidget {
+
+  final imageUrl, categoryName;
+  CategoryTile({this.imageUrl,this.categoryName});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child:
+      Stack(
+      children: <Widget>[
+        Image.network(imageUrl),
+      ],
+    ), );
   }
 }
