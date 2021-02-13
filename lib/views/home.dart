@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -11,15 +13,18 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text("News"),
-            Text("Application", style: TextStyle(
+            Text(" Assignment ", style: TextStyle(
                 color: Colors.blue
             ),),
-            Text("Assignment"),
+            Text("App"),
           ],
         ),
+        elevation: 0.0,
       ),
+
     );
   }
 }
