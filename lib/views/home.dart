@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:news_assignment_application/helper/data.dart';
+import 'package:news_assignment_application/helper/news.dart';
+import 'package:news_assignment_application/models/article_model.dart';
 import 'package:news_assignment_application/models/category_model.dart';
 
 class Home extends StatefulWidget {
@@ -11,10 +13,23 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List<CategoryModel> categories= new List<CategoryModel>();
+  List<ArticleModel> articles= new List<ArticleModel>();
+  bool _loading=true;
+
   @override
   void initState(){
     super.initState();
     categories= getCategories();
+    getNews();
+  }
+
+  getNews() async{
+      News newsClass= News();
+      await newsClass.getNews();
+      articles= newsClass.news;
+      setState(() {
+        _loading=false;
+      });
   }
 
   Widget build(BuildContext context) {
@@ -32,9 +47,16 @@ class _HomeState extends State<Home> {
         ),
         elevation: 0.0,
       ),
-      body: Container(
+      body: _loading? Center(
+        child: Container(
+          child: CircularProgressIndicator(),
+        ),
+      ):
+
+      Container(
         child: Column(
           children: <Widget>[
+            ///categories
             Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
               height: 70,
@@ -49,7 +71,22 @@ class _HomeState extends State<Home> {
                   );
                 },
               ),
+            ),
+            ///blogs
+            Container(
+              child: ListView.builder(
+                itemCount: articles.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context,index){
+                  return BlogTile(
+                  imageUrl: articles[index].urlToImage,
+                  title:articles[index].title,
+                  description: articles[index].description,
+                  );
+              },
+              ),
             )
+
           ],
         ),
       ),
@@ -99,10 +136,9 @@ class CategoryTile extends StatelessWidget {
 
 class BlogTile extends StatelessWidget {
 
-
   final String imageUrl,title, description;
+  BlogTile({@required this.imageUrl,@required this.title,@required this.description});
 
-  const BlogTile({Key key, this.imageUrl, this.title, this.description}) : super(key: key);
     @override
   Widget build(BuildContext context) {
     return Container( 
