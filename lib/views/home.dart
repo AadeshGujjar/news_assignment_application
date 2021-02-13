@@ -82,7 +82,7 @@ class CategoryTile extends StatelessWidget {
             width: 120, height: 60,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(6.0),
-              color: Colors.black38,
+              color: Colors.black26,
             ),
 
             child: Text(categoryName, style:  TextStyle(
