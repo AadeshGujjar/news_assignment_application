@@ -24,7 +24,7 @@ class _CategoryNewsState extends State<CategoryNews> {
     getCategoryNews();
   }
 
-  getCategoryNews() async{
+  Future<void>getCategoryNews() async{
     CategoryNewsClass newsClass= CategoryNewsClass();
     await newsClass.getNews(widget.category);
     article= newsClass.news;
@@ -64,29 +64,32 @@ class _CategoryNewsState extends State<CategoryNews> {
           ),
         ):
 
-        SingleChildScrollView(
+        RefreshIndicator(
+          onRefresh: getCategoryNews,
+          child: SingleChildScrollView(
 
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.only(top: 16),
-                  child: ListView.builder(
-                    itemCount: article.length,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    itemBuilder: (context,index){
-                      return BlogTile(
-                        imageUrl: article[index].urlToImage,
-                        title:article[index].title,
-                        description: article[index].description,
-                        url: article[index].url,
-                      );
-                    },
-                  ),
-                )
-              ],
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(top: 16),
+                    child: ListView.builder(
+                      itemCount: article.length,
+                      shrinkWrap: true,
+                      physics: ClampingScrollPhysics(),
+                      itemBuilder: (context,index){
+                        return BlogTile(
+                          imageUrl: article[index].urlToImage,
+                          title:article[index].title,
+                          description: article[index].description,
+                          url: article[index].url,
+                        );
+                      },
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
