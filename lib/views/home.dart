@@ -6,6 +6,7 @@ import 'package:news_assignment_application/helper/data.dart';
 import 'package:news_assignment_application/helper/news.dart';
 import 'package:news_assignment_application/models/article_model.dart';
 import 'package:news_assignment_application/models/category_model.dart';
+import 'package:news_assignment_application/views/article_views.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -88,6 +89,7 @@ class _HomeState extends State<Home> {
                     imageUrl: articles[index].urlToImage,
                     title:articles[index].title,
                     description: articles[index].description,
+                     url: articles[index].url,
                     );
                 },
                 ),
@@ -144,28 +146,38 @@ class CategoryTile extends StatelessWidget {
 
 class BlogTile extends StatelessWidget {
 
-  final String imageUrl,title, description;
-  BlogTile({@required this.imageUrl,@required this.title,@required this.description});
+  final String imageUrl,title, description, url;
+  BlogTile({@required this.imageUrl,@required this.title,@required this.description, @required this.url});
 
     @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 16),
-      child: Column(
-        children: <Widget>[
-          ClipRRect(
-              borderRadius: BorderRadius.circular(6),
-              child: Image.network(imageUrl)),
-        Text(title, style: TextStyle(
-          fontSize: 17,
-          color: Colors.black87,
-          fontWeight: FontWeight.w500
-        ) ,),
-        SizedBox(height: 8.0,),
-        Text(description, style:  TextStyle(
-            color: Colors.black54
-        ),),
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => ArticleView(
+
+
+            )
+        ),);
+      },
+       child: Container(
+        margin: EdgeInsets.only(bottom: 16),
+        child: Column(
+          children: <Widget>[
+            ClipRRect(
+                borderRadius: BorderRadius.circular(6),
+                child: Image.network(imageUrl)),
+          Text(title, style: TextStyle(
+            fontSize: 17,
+            color: Colors.black87,
+            fontWeight: FontWeight.w500
+          ) ,),
+          SizedBox(height: 8.0,),
+          Text(description, style:  TextStyle(
+              color: Colors.black54
+          ),),
+          ],
+        ),
       ),
     );
   }
