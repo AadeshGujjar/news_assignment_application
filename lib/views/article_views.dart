@@ -30,13 +30,11 @@ class _ArticleViewState extends State<ArticleView> {
           ],
         ),
         actions: <Widget>[
-          Opacity(
-            opacity: 0,
-            child: Container(
+          Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Icon(Icons.save),
             ),
-          )
+
         ],
 
         elevation: 0.0,
@@ -45,12 +43,11 @@ class _ArticleViewState extends State<ArticleView> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: WebView(
-
           initialUrl: widget.blogUrl,
-          onWebViewCreated: (( WebViewController webViewController){
+          onWebViewCreated: ( WebViewController webViewController){
             _completer.complete(webViewController);
 
-          }),
+          },
         ),
       ),
     );

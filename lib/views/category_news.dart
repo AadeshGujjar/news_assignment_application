@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news_assignment_application/helper/news.dart';
 import 'package:news_assignment_application/models/article_model.dart';
@@ -64,7 +65,9 @@ class _CategoryNewsState extends State<CategoryNews> {
         ):
 
         SingleChildScrollView(
+
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: <Widget>[
                 Container(

@@ -152,7 +152,7 @@ class CategoryTile extends StatelessWidget {
 class BlogTile extends StatelessWidget {
 
   final String imageUrl,title, description, url;
-  BlogTile({@required this.imageUrl,@required this.title,@required this.description, @required this.url});
+  BlogTile({this.imageUrl,this.title,this.description, @required this.url});
 
     @override
   Widget build(BuildContext context) {
@@ -160,7 +160,7 @@ class BlogTile extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => ArticleView(
-
+            blogUrl: url,
 
             )
         ),);
