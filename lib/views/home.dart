@@ -7,6 +7,7 @@ import 'package:news_assignment_application/helper/news.dart';
 import 'package:news_assignment_application/models/article_model.dart';
 import 'package:news_assignment_application/models/category_model.dart';
 import 'package:news_assignment_application/views/article_views.dart';
+import 'package:news_assignment_application/views/category_news.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -106,13 +107,17 @@ class _HomeState extends State<Home> {
 
 class CategoryTile extends StatelessWidget {
 
-  final imageUrl, categoryName;
+  final String imageUrl, categoryName;
   CategoryTile({this.imageUrl,this.categoryName});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
+           Navigator.push(context, MaterialPageRoute(
+             builder: (context)=>CategoryNews(
+               category: categoryName.toLowerCase(),
+             )
+           ));
       },
       child: Container(
         margin: EdgeInsets.only(right: 15),

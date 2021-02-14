@@ -14,7 +14,7 @@ class ArticleView extends StatefulWidget {
 
 class _ArticleViewState extends State<ArticleView> {
 
-  final Completer<WebViewController> _completer=Completer<WebViewController>();
+  final Completer<WebViewController> _completer= Completer<WebViewController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +22,7 @@ class _ArticleViewState extends State<ArticleView> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("News"),
+
             Text(" Assignment ", style: TextStyle(
                 color: Colors.blue
             ),),
@@ -34,7 +34,7 @@ class _ArticleViewState extends State<ArticleView> {
             opacity: 0,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16),
-
+              child: Icon(Icons.save),
             ),
           )
         ],
@@ -42,7 +42,8 @@ class _ArticleViewState extends State<ArticleView> {
         elevation: 0.0,
       ),
       body: Container(
-        
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
         child: WebView(
 
           initialUrl: widget.blogUrl,
