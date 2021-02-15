@@ -1,6 +1,6 @@
 # news_assignment_application
 
-A new Flutter project.
+A news application using Flutter developement kit using MVVM architecture. 
 
 ## Getting Started
 
