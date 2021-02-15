@@ -8,6 +8,7 @@ import 'package:news_assignment_application/models/article_model.dart';
 import 'package:news_assignment_application/models/category_model.dart';
 import 'package:news_assignment_application/views/article_views.dart';
 import 'package:news_assignment_application/views/category_news.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -52,8 +53,15 @@ class _HomeState extends State<Home> {
       ),
       body: _loading? Center(
         child: Container(
-          child: CircularProgressIndicator(),
-        ),
+          color: Colors.blue,
+          child: Center(
+
+              child: SpinKitPulse(
+                color: Colors.white,
+                size: 50.0,
+              ),
+          ),
+         ),
       ):
 
       RefreshIndicator(

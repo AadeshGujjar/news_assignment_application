@@ -32,6 +32,10 @@ dependencies:
   http: any
   cached_network_image: ^2.5.0
   webview_flutter: ^1.0.7
+  flutter_spinkit: "^4.1.2"
+  localstorage: ^3.0.6
+  path_provider: ^1.6.27
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

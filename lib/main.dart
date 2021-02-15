@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:news_assignment_application/views/home.dart';
+import 'file:///E:/Flutter/my_flutter_project/news_assignment_application/lib/view_model/home.dart';
+
 
 void main() {
+
   runApp(MyApp());
 }
 

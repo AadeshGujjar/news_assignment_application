@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:news_assignment_application/helper/news.dart';
 import 'package:news_assignment_application/models/article_model.dart';
 
-import 'home.dart';
+import '../view_model/home.dart';
 
 class CategoryNews extends StatefulWidget {
   final String category;
@@ -60,7 +61,14 @@ class _CategoryNewsState extends State<CategoryNews> {
       ),
         body:  _loading? Center(
           child: Container(
-            child: CircularProgressIndicator(),
+            color: Colors.blue,
+            child: Center(
+
+              child: SpinKitFadingCube(
+                color: Colors.white,
+                size: 50.0,
+              ),
+            ),
           ),
         ):
 

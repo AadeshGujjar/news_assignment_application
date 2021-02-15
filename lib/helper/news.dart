@@ -37,6 +37,8 @@ class News{
 
 class CategoryNewsClass{
   List<ArticleModel> news = [];
+  bool fromCache=false;
+
   Future<void> getNews(String category) async{
     String url= "https://newsapi.org/v2/top-headlines?category=$category&country=us&apiKey=7d730577062c469094d352562061ffa5";
 
@@ -65,5 +67,7 @@ class CategoryNewsClass{
 
 
     }
+
   }
+
 }
